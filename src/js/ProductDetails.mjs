@@ -9,17 +9,17 @@ export default class ProductDetails {
   }
 
   async init() {
-    this.plant = await this.dataSource.findPlantByCommonNames(this.common_names); // Busca por nombres comunes
+    this.plant = await this.dataSource.findPlantByCommonNames(this.common_names); 
     if (this.plant) {
-        this.renderPlantDetails("main"); // Muestra los detalles en el elemento principal
+        this.renderPlantDetails("main"); 
         document.getElementById('addToWish')
-        .addEventListener('click', this.addToWish.bind(this)); // Configura el botón "Añadir a la Lista de Deseos"
+        .addEventListener('click', this.addToWish.bind(this)); 
     } else {
         console.error(`No se encontró ninguna planta con los nombres comunes: ${this.common_names}`);
     }
 }
 
-// Lógica para añadir la planta a la lista de deseos
+
 addToWish() {
     let wishList = getLocalStorage("plant-wish") || [];
     const existingItemIndex = wishList.findIndex(item => item.id === this.plant.id);
@@ -27,13 +27,13 @@ addToWish() {
     if (existingItemIndex > -1) {
         alert(`${this.plant["Common name (fr.)"]} ya está en tu lista de deseos.`);
     } else {
-        wishList.push(this.plant); // Agrega la planta a la lista
-        setLocalStorage("plant-wish", wishList); // Actualiza el localStorage
+        wishList.push(this.plant); 
+        setLocalStorage("plant-wish", wishList); 
         alert(`${this.plant["Common name (fr.)"]} ha sido añadida a tu lista de deseos.`);
     }
 }
 
-// Renderiza los detalles de la planta en el DOM
+
 renderPlantDetails(selector) {
     const element = document.querySelector(selector);
     if (!element) {
@@ -41,11 +41,10 @@ renderPlantDetails(selector) {
         return;
     }
     
-    // Inserta la plantilla con los detalles de la planta
+   
     element.insertAdjacentHTML("afterbegin", this.plantDetailsTemplate(this.plant));
 }
 
-// Plantilla de los detalles de la planta
 plantDetailsTemplate(plant) {
     const commonNames = plant["Common name"].join(', ');
     const insects = plant.Insects ? plant.Insects.join(', ') : 'Ninguno';
@@ -70,13 +69,13 @@ plantDetailsTemplate(plant) {
 }
 }
 
-// Función auxiliar para obtener datos del localStorage
+
 function getLocalStorage(key) {
 const storedData = localStorage.getItem(key);
 return storedData ? JSON.parse(storedData) : [];
 }
 
-// Función auxiliar para establecer datos en el localStorage
+
 function setLocalStorage(key, data) {
 localStorage.setItem(key, JSON.stringify(data));
 }

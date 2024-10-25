@@ -5,16 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const query = document.getElementById('plant-search-input').value;
-    if (!query) return; // Si no hay consulta, no hacer nada.
+    if (!query) return; 
 
-    // Cambiamos el URL para buscar por categoría
+    
     const apiUrl = `https://house-plants2.p.rapidapi.com/category/${query}`;
 
     try {
       const response = await fetch(apiUrl, {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key': 'bb2e07b010msh6634776de10f3a1p10227bjsnabca4f821a73', // Asegúrate de usar tu clave aquí
+          'X-RapidAPI-Key': 'bb2e07b010msh6634776de10f3a1p10227bjsnabca4f821a73', 
           'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com'
         }
       });
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         plantCard.classList.add('plant-card');
 
         const plantImage = document.createElement('img');
-        plantImage.src = plant.Img || 'placeholder.jpg'; // Añade un valor por defecto si no hay imagen
+        plantImage.src = plant.Img || 'placeholder.jpg'; 
         plantImage.alt = plant["Common name (fr.)"] || 'Unknown';
 
         const plantInfo = document.createElement('div');
@@ -91,14 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(plantCard);
     });
 
-    loadWishlist(); // Asegúrate de que esta función esté definida
+    loadWishlist(); 
 }
 
   
-  // Asegúrate de llamar a `renderPlants` después de que el DOM esté completamente cargado
+  
   document.addEventListener('DOMContentLoaded', () => {
-    // Llama a `renderPlants` con el array `plants` una vez que tengas los datos
-    renderPlants(plantsArray); // Reemplaza `plantsArray` con tu variable de datos reales
+    
+    renderPlants(plantsArray); 
     
   }); 
    

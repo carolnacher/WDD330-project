@@ -120,10 +120,10 @@ export function removeAllAlerts() {
 
 
 export function updateWishListCount() {
-    // Verificar si estamos en la página de gardenwish
+    
     const currentPage = window.location.pathname;
     if (currentPage.includes("/src/gardenwish/index.html")) {
-        // Obtener la lista de deseos del localStorage o usar el array de savedPlants
+        
         const savedPlants = JSON.parse(localStorage.getItem('wishlist')) || [];
         
         const wishlistCountElement = document.getElementById('wishlist-count');

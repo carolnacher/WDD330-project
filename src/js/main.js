@@ -7,6 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadHeaderFooter("../partials/header.html", "main-header");
     loadHeaderFooter("../partials/footer.html", "main-footer");
 
-    // Verificar si estamos en la página de gardenWish
+    
    loadWishlist();
 });

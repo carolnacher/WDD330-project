@@ -4,7 +4,7 @@ export function displayWishlist() {
     const wishlistContainer = document.getElementById('wishlist');
     if (!wishlistContainer) {
         console.warn('Wishlist container not found. Function displayWishlist() will not run.');
-        return; // Detén la ejecución si no estás en la página correcta
+        return; 
     }
 
     wishlistContainer.innerHTML = '';
@@ -17,7 +17,7 @@ export function displayWishlist() {
             plantCard.classList.add('plant-card');
 
             const plantImage = document.createElement('img');
-            plantImage.src = plant.Img || 'default.jpg'; // Usa una imagen por defecto si no hay imagen
+            plantImage.src = plant.Img || 'default.jpg'; 
             plantImage.alt = plant["Common name (fr.)"] || 'Unknown';
 
             const plantInfo = document.createElement('div');
@@ -32,7 +32,7 @@ export function displayWishlist() {
             const family = document.createElement('p');
             family.textContent = `Family: ${plant.Family || 'Unknown'}`;
 
-            // Botón para eliminar la planta de la lista de deseos
+            
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
             removeButton.addEventListener('click', () => removeFromWishlist(index));
@@ -50,10 +50,10 @@ export function displayWishlist() {
 }
 
 export function addToWishlist(plant) {
-    // Agrega la planta al array
+    
     savedPlants.push(plant);
     
-    // Actualiza el almacenamiento y la lista en pantalla
+   
     updateLocalStorage();
     displayWishlist();
     
@@ -75,5 +75,5 @@ export function loadWishlist() {
     if (storedPlants) {
         savedPlants = storedPlants;
     }
-    displayWishlist();  // Muestra la lista después de cargarla
+    displayWishlist();  
 }
