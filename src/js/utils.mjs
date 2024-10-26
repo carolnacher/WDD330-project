@@ -84,39 +84,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlString);
 }
 
-export function alertMessage(message, scroll = true) {
-  const alert = document.createElement('div');
-  alert.classList.add("alert");
 
-  // Verificar si el mensaje es un objeto
-  if (typeof message === 'object') {
-    // Convertir el objeto en un string legible
-    const formattedMessage = Object.keys(message).map(key => `${key}: ${message[key]}`).join('<br>');
-    alert.innerHTML = `<p>${formattedMessage}</p><span>X</span>`;
-  } else {
-    // Si no es un objeto, simplemente mostrar el mensaje
-    alert.innerHTML = `<p>${message}</p><span>X</span>`;
-  }
-
-  alert.addEventListener("click", function (e) {
-    if (e.target.tagName === "SPAN") {
-      main.removeChild(this);
-    }
-  });
-
-  const main = document.querySelector('main');
-  main.prepend(alert);
-
-  if (scroll) {
-    window.scrollTo(0, 0);
-  }
-}
-
-
-export function removeAllAlerts() {
-  const alerts = document.querySelectorAll(".alert");
-  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
-}
 
 
 export function updateWishListCount() {

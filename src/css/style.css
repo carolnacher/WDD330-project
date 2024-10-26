@@ -277,30 +277,7 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-/* Cart badge styles */
-.cart-icon-container {
-  position: relative;
-}
 
-.cart-icon {
-  width: 25px;
-  height: auto;
-}
-
-.cart-count {
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  background-color: #f4df6a;
-  color: #000000;
-  border-radius: 90%;
-  padding: 5px 8px;
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /*Delete button*/
 .cart-card__remove {
   background-color: rgb(251, 49, 49);
@@ -350,7 +327,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 0 25px 25px 0;
+  border: radius 5px;;
   transition: background-color 0.3s;
 }
 
@@ -408,9 +385,9 @@ label {
 
 #plant-search-form {
   display: flex;
-  justify-content: center; /* Centra el formulario en la página */
-  align-items: center; /* Alinea el botón y el input verticalmente */
-  gap: 10px; /* Espacio entre el input y el botón */
+  justify-content: center; 
+  align-items: center; 
+  gap: 10px; 
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -420,7 +397,7 @@ label {
   font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  width: 250px; /* Controla el ancho del input */
+  width: 250px; 
 }
 
 #plant-search-form button {
@@ -438,47 +415,88 @@ label {
   background-color: #218838;
 }
 
+/*alert menssage*/
 
+#alert-message {
+  display: none; 
+  background-color: #4CAF50;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  position: fixed;
+  top: 150px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#alert-message.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); 
+}
+
+#wishlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 20px; 
+}
 
 /*plant card*/
 .plant-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
-  grid-gap: 20px; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 20px; 
 }
 
 .plant-card {
-  display: flex;               /* Habilita flexbox en la tarjeta */
-  flex-direction: column;       /* Organiza el contenido en columna (imagen y texto) */
-  justify-content: center;      /* Centra verticalmente */
-  align-items: center;          /* Centra horizontalmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
   box-sizing: border-box;
+  width: 250px; 
+  min-height: 350px; 
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .plant-card img {
-  max-width: 100%;
+  width: 100%; 
   height: auto;
-  display: block;               /* Asegura que la imagen se comporte como un bloque */
+  display: block;
+  border-bottom: 1px solid #ddd; 
 }
 
-
 .plant-info {
-  padding: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.plant-info h3,
+.plant-info p {
+  margin: 5px 0; 
 }
 
 /* Para hacerlo responsivo */
 @media (max-width: 768px) {
   .plant-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 480px) {
   .plant-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas pequeñas */
+    grid-template-columns: repeat(1, 1fr); 
   }
 }
 

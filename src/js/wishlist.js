@@ -4,7 +4,7 @@ export function displayWishlist() {
     const wishlistContainer = document.getElementById('wishlist');
     if (!wishlistContainer) {
         console.warn('Wishlist container not found. Function displayWishlist() will not run.');
-        return; 
+        return;
     }
 
     wishlistContainer.innerHTML = '';
@@ -32,6 +32,9 @@ export function displayWishlist() {
             const family = document.createElement('p');
             family.textContent = `Family: ${plant.Family || 'Unknown'}`;
 
+            const Climat =document.createElement('h3');
+            Climat.textContent = `Family: ${plant.Climat || 'Unknown'}`;
+
             
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
@@ -43,7 +46,7 @@ export function displayWishlist() {
             plantCard.appendChild(plantImage);
             plantCard.appendChild(plantInfo);
             plantCard.appendChild(removeButton);
-
+            plantCard.appendChild(Climat);
             wishlistContainer.appendChild(plantCard);
         });
     }
@@ -53,11 +56,21 @@ export function addToWishlist(plant) {
     
     savedPlants.push(plant);
     
-   
     updateLocalStorage();
     displayWishlist();
     
+    showAlertMessage('Plant added to wishlist successfully!');
     console.log('Plant added to wishlist:', plant);
+}
+function showAlertMessage(message) {
+    const alertMessage = document.getElementById('alert-message');
+    alertMessage.textContent = message;
+    alertMessage.classList.add('show'); 
+
+    
+    setTimeout(() => {
+        alertMessage.classList.remove('show');
+    }, 3000);
 }
 
 export function removeFromWishlist(plantIndex) {
